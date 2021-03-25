@@ -23,7 +23,6 @@ const notesRouter = require('./routes/note')
 
 // settings
 app.set('appName', 'Servidor app nodejs express ');
-app.set('port', 5000);
 const configMongoose = {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true}
 
 // middleware
@@ -73,8 +72,8 @@ const urlConnect = `mongodb+srv://${process.env.USER_MONGO}:${process.env.PASSWO
 mongoose.connect(urlConnect, configMongoose)
 .then(() => {
   console.log(`Conexion establecida a la base de datos`)
-  app.listen(app.get('port'), () => {
-    console.log(`Server running in port ${app.get('port')} - ${app.get('appName')}`)
+  app.listen(process.env.PORT, () => {
+    console.log(`Server running in port ${process.env.PORT} - ${app.get('appName')}`)
   })
 })
 .catch(err => {
