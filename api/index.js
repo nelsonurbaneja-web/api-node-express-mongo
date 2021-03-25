@@ -45,6 +45,9 @@ app.use((req, res, next) => { //Configuring cors
 
 
 // routes
+app.use('/', (req,res) => {
+  res.status(200).send({message: 'Server running'})
+});
 app.use('/product', productRouter);
 app.use('/order', orderRouter);
 app.use('/user', userRouter);
